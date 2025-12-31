@@ -291,7 +291,7 @@ func StartApiServer(logger *zap.Logger, startupLogger *zap.Logger, db *sql.DB, p
 	})
 
 	// Enable CORS on all requests.
-	CORSHeaders := handlers.AllowedHeaders([]string{"Authorization", "Content-Type", "User-Agent"})
+	CORSHeaders := handlers.AllowedHeaders([]string{"Authorization", "Content-Type", "User-Agent", "payment-signature", "access-control-expose-headers"})
 	CORSOrigins := handlers.AllowedOrigins([]string{"*"})
 	CORSMethods := handlers.AllowedMethods([]string{http.MethodGet, http.MethodHead, http.MethodPost, http.MethodPut, http.MethodDelete})
 	handlerWithCORS := handlers.CORS(CORSHeaders, CORSOrigins, CORSMethods)(grpcGatewayRouter)
